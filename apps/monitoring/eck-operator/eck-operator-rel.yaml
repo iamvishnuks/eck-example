@@ -1,0 +1,19 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: eck-operator-rel
+  namespace: monitor
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: eck-operator
+      sourceRef:
+        kind: HelmRepository
+        name: elastic
+        namespace: default
+      valuesFiles:
+        - values.yaml
+      interval: 1m
+
+      
